@@ -4,11 +4,13 @@
 
 React公式ページ
 [既存のウェブサイトに React を追加する](https://ja.reactjs.org/docs/add-react-to-a-website.html#optional-try-react-with-jsx)
-で、`jsx`をhtmlファイルに直接記載して実行するサンプルがありました。
+に、`jsx`をhtmlファイルに直接記載して実行するサンプルがあります。
 
-[@babel/standalone](https://babeljs.io/docs/en/babel-standalone)を読み込み、トランスパイルと実行を行うことで実現しています。
+[@babel/standalone](https://babeljs.io/docs/en/babel-standalone)を読み込み、Reactを実行しています。
 
 ```html
+  <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
   <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
   <div id="root"></div>
   <script type="text/babel">
@@ -22,7 +24,10 @@ React公式ページ
     root.render(<MyApp />);
   </script>
 ```
-上記サンプルを元に、htmlだけでTypeScriptとReactを実行するサンプルプログラムを作成します。
+
+上記サンプルを元に、htmlだけでTypeScriptとReactを実行するサンプルプログラムを作ります。
+
+実現する機能
 * Reactをimportで利用する(ES Module)・・・ブラウザが`ES Module`を読み込めるようになった
 * TypeScript(tsx)化・・・Babel7でTypeScriptのトランスパイルをサポート
 
@@ -32,16 +37,15 @@ React公式ページ
 1. [@babel/standalone](https://babeljs.io/docs/en/babel-standalone)を使い、簡単なReactアプリケーションを作成(javascript)
 1. Reactを&lt;script&gt;タグから、import経由で読み込むように変更
 1. TypeScript化(babelのプリセットをtypescriptに変更)
-1. React部分を別ファイル(.tsx)に切り出す(おまけ、tsxファイルを読み込み実行できることを確認)
+1. React部分を別ファイル(.tsx)に切り出す(おまけ。tsxファイルを読み込み、そのまま実行できることを確認)
 
 
 ## 1. [@babel/standalone](https://babeljs.io/docs/en/babel-standalone)を使い、簡単なReactアプリケーションを作成(javascript)
 
-[既存のウェブサイトに React を追加する](https://ja.reactjs.org/docs/add-react-to-a-website.html#optional-try-react-with-jsx) を少し変更して、クリックするとカウントアップする処理を作成
+[既存のウェブサイトに React を追加する](https://ja.reactjs.org/docs/add-react-to-a-website.html#optional-try-react-with-jsx) を少し変更して、クリックするとカウントアップする処理を作成する。
 
 * `jsx`はブラウザが処理できないため、`type="text/babel"`に記載します(ブラウザが認識しないContent-Typeを指定する)。
-b
-abelのランタイムトランスパイラは、上記からスクリプトを読み込み、トランスパイルと実行を行います。
+babelのランタイムトランスパイラは、上記からスクリプトを読み込み、トランスパイルと実行を行います。
 
 js_standalone_react.html
 ```html
@@ -81,7 +85,7 @@ js_standalone_react.html
 
 ### 起動方法
 
-エクスプローラーから直接htmlを開いても動作します。
+エクスプローラーから直接html開けば動作します。
 
 webサーバ経由で開く場合は`http-server`などを利用してください。
 ```bash
@@ -137,6 +141,8 @@ js_esm_standalone_react.html
 JavaScriptをTypeScript化します。
 (TypeScriptがブラウザで動作することを確認するためのサンプル)
 
+型指定したコードがそのまま実行できます(`React.useState<number>(0)`)
+
 ts_standalone_react.html
 ```html
 <!DOCTYPE html>
@@ -177,7 +183,7 @@ ts_standalone_react.html
 </html>
 ```
 
-## 4. React部分を別ファイル(.tsx)に切り出す(おまけ、tsxファイルを読み込み実行できることを確認)
+## 4. React部分を別ファイル(.tsx)に切り出す(おまけ。tsxファイルを読み込み、そのまま実行できることを確認)
 
 * &lt;script type="text/babel"&gt;を`Counter.tsx`に抜き出し、srcでファイル名を指定します
 
