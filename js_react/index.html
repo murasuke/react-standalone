@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8">
+  <title>React js-standalone</title>
+  <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script type="text/babel">
+    const Counter = () => {
+      const [count, setCount] = React.useState(0);
+      const handleClick = () => setCount((n) => n + 1);
+      return (
+        <>
+          <div>Count: {count}</div>
+          <button onClick={handleClick}>Increment</button>
+        </>
+      );
+    };
+    ReactDOM.render(<Counter />, document.getElementById('app'));
+  </script>
+</head>
+<body>
+  <div id="app"></div>
+</body>
+</html>
+
