@@ -1,10 +1,7 @@
 # React+TypeScriptを1つのHTMLファイルのみ(プリコンパイルなし)で実行するサンプル
-
 ## はじめに
 
-React公式ページ
-[既存のウェブサイトに React を追加する](https://ja.reactjs.org/docs/add-react-to-a-website.html#optional-try-react-with-jsx)
-に、`jsx`をhtmlファイルに直接記載して実行するサンプルがあります。
+React公式ページ[既存のウェブサイトに React を追加する](https://ja.reactjs.org/docs/add-react-to-a-website.html#optional-try-react-with-jsx)に、`jsx`をhtmlファイルに直接記載して実行するサンプルがあります。
 
 [@babel/standalone](https://babeljs.io/docs/en/babel-standalone)を読み込み、Reactを実行しています。
 
@@ -148,7 +145,7 @@ ts_standalone_react.html
 <!DOCTYPE html>
 <head>
   <meta charset="utf-8">
-  <title>React Elements</title>
+  <title>React tsx-esm-standalone</title>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
   <script>
     // typescript用のpresetを登録する
@@ -193,7 +190,7 @@ index.html
 <!DOCTYPE html>
 <head>
   <meta charset="utf-8">
-  <title>React Elements</title>
+  <title>React tsx-esm-standalone</title>
   <script  src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
   <script>
     Babel.registerPreset('tsx', {
